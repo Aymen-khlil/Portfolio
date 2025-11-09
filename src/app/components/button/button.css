@@ -1,0 +1,18 @@
+.pixel-button {
+  border-style: solid;
+  border-width: 0px;
+  border-image-slice: 11 7 14 7;
+  border-image-width: 7px 7px 10px 7px;
+  border-image-repeat: stretch;
+  border-image-source: url("/btn2.png"); /* place image in /public/btn.png */
+  color: #ffb84d;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+.pixel-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}

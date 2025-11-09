@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-por: #54f;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,8 +23,10 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-image: url("/bgg.png");
+  background-size: cover; /* fills entire viewport */
+  background-position: center; /* centers image */
+  background-repeat: no-repeat;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,5 +46,35 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+.title {
+  color: #fba710;
+  text-shadow: 0 0 8px #ff8c00, 0 0 16px #ff4500, 0 0 24px #ff6a00,
+    0 0 40px #ff4500;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  animation: flicker 10s infinite ease-in-out;
+}
+
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: 0 0 6px #ff8c00, 0 0 16px #ff4500, 0 0 24px #ff6a00,
+      0 0 40px #ff4500;
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+    opacity: 0.8;
   }
 }
