@@ -1,6 +1,7 @@
 import Image from "next/image";
 import MagicButton from "../components/button/MagicButton";
 import TextType from "@/components/TextType";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -33,7 +34,9 @@ export default function HomePage() {
           </div>
 
           <div className="">
-            <MagicButton />
+            <Link href="/choose-your-house">
+              <MagicButton />
+            </Link>
           </div>
         </div>
       </div>

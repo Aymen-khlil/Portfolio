@@ -26,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PixelTrail />
-      <body className={`${geistSans.className} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.className} ${geistMono.variable} h-screen    overflow-auto`}
+      >
         {children}
       </body>
     </html>
