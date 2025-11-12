@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PixelTrail from "@/components/pixelTrail";
+import PixelTraillWrapper from "@/components/pixelTrails/pixelTraillWrapper";
 
 const geistSans = Press_Start_2P({
   subsets: ["latin"],
@@ -25,10 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <PixelTrail />
       <body
         className={`${geistSans.className} ${geistMono.variable} h-screen    overflow-auto`}
       >
+        <PixelTraillWrapper />
         {children}
       </body>
     </html>

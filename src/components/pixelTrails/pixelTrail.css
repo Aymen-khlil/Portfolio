@@ -1,0 +1,22 @@
+.pixles {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  /* background-color: var(--pixel-color); */
+  /* border-radius: 50%; */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fade 0.8s ease-out forwards;
+  /* box-shadow: 0 0 8px 4px var(--pixel-color); */
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
