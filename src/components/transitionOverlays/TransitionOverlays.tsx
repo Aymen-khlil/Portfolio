@@ -3,8 +3,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import TextType from "../TextType";
 
 interface TransitionOverlayProps {
   isActive: boolean;
@@ -25,9 +25,9 @@ export default function TransitionOverlay({
   displayTime = 2000,
   onComplete,
 }: TransitionOverlayProps) {
-  // TransitionOverlay.tsx
   const [visible, setVisible] = useState(isActive);
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
+  const [shouldHide, setShouldHide] = useState(false);
 
   useEffect(() => {
     if (isActive) {
@@ -39,16 +39,21 @@ export default function TransitionOverlay({
         setShouldFadeOut(true);
       }, duration + displayTime);
 
+      const hideOutTimer = setTimeout(() => {
+        setShouldHide(true);
+      }, displayTime);
+
       // Navigate and cleanup after fade-out completes
       const completeTimer = setTimeout(() => {
         onComplete?.();
         setTimeout(() => {
           setVisible(false);
         }, 100);
-      }, duration * 2 + displayTime);
+      }, duration + displayTime * 2);
 
       return () => {
         clearTimeout(fadeOutTimer);
+        clearTimeout(hideOutTimer);
         clearTimeout(completeTimer);
       };
     }
@@ -67,12 +72,23 @@ export default function TransitionOverlay({
         >
           {text && (
             <motion.p
-              className="text-white text-lg mt-4 font-pixel"
+              className=""
               initial={{ opacity: 0 }}
-              animate={{ opacity: shouldFadeOut ? 0 : 1 }}
-              transition={{ delay: duration / 1000 + 0.5 }}
+              animate={{ opacity: shouldHide ? 0 : 1 }}
+              transition={{
+                delay: shouldHide ? 0 : 1,
+                duration: duration / 1000,
+              }}
+              exit={{ opacity: 0 }}
             >
-              {text}
+              <TextType
+                text={text}
+                typingSpeed={50}
+                pauseDuration={1000}
+                initialDelay={1000}
+                showCursor={false}
+                className="text-white text-lg animate-typing "
+              />
             </motion.p>
           )}
         </motion.div>

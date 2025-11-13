@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import "./button.css";
 
 export default function MagicButton({ onClick }: { onClick: () => void }) {

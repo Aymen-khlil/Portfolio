@@ -3,6 +3,7 @@
 import MagicButton from "../components/button/MagicButton";
 import TextType from "@/components/TextType";
 import TransitionOverlay from "@/components/transitionOverlays/TransitionOverlays";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Activity, useState } from "react";
 
@@ -14,7 +15,7 @@ export default function HomePage() {
   const handleClick = () => {
     setTransition(true);
 
-    const totalTime = 800 + 1000;
+    const totalTime = 800 + 1500;
     setTimeout(() => {
       setHideContent(true);
     }, totalTime);
@@ -57,20 +58,39 @@ export default function HomePage() {
             </div>
 
             <div className="">
-              {/* <Link href="/choose-your-house"> */}
-              <MagicButton onClick={handleClick} />
-              {/* </Link> */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 1,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
+                whileHover={{
+                  y: [-5, 5, -5],
+                  transition: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    ease: "easeInOut",
+                  },
+                  // boxShadow: "0 0 50px #ffb84d",
+                  // rotate: [-1, 1, 0],
+                }}
+              >
+                <MagicButton onClick={handleClick} />
+              </motion.div>
             </div>
           </div>
         </div>
       </Activity>
       <TransitionOverlay
         isActive={transition}
-        bgColor="#000000"
+        bgColor="#000"
         imageSrc="/sorting-hat.png"
         text="The journey begins..."
-        duration={800}
-        displayTime={1500}
+        duration={1000}
+        displayTime={3000}
         onComplete={() => router.push("/choose-your-house")}
       />
     </section>
