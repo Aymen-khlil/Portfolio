@@ -49,7 +49,7 @@ export default function TransitionOverlay({
         setTimeout(() => {
           setVisible(false);
         }, 100);
-      }, duration + displayTime * 2);
+      }, duration + displayTime * 1.2);
 
       return () => {
         clearTimeout(fadeOutTimer);

@@ -3,17 +3,19 @@
 import MagicButton from "../components/button/MagicButton";
 import TextType from "@/components/TextType";
 import TransitionOverlay from "@/components/transitionOverlays/TransitionOverlays";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Activity, useState } from "react";
 
 export default function HomePage() {
   const [transition, setTransition] = useState(false);
   const [hideContent, setHideContent] = useState(false);
+  const [showButton, setShowButton] = useState(true);
   const router = useRouter();
 
   const handleClick = () => {
     setTransition(true);
+    setShowButton(false);
 
     const totalTime = 800 + 1500;
     setTimeout(() => {
@@ -25,8 +27,12 @@ export default function HomePage() {
     <section
       className="h-screen  flex flex-col items-center justify-center text-center overflow-auto "
       style={{
-        backgroundImage: hideContent ? "url('/home-background.png')" : "",
+        backgroundImage: hideContent
+          ? "url('/backgrounds/hog-dining.png')"
+          : "",
         backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Activity mode={hideContent ? "hidden" : "visible"}>
@@ -57,33 +63,37 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 1,
-                  ease: "easeOut",
-                }}
-                className="inline-block"
-                whileHover={{
-                  y: [-5, 5, -5],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    ease: "easeInOut",
-                  },
-                  // boxShadow: "0 0 50px #ffb84d",
-                  // rotate: [-1, 1, 0],
-                }}
-              >
-                <MagicButton onClick={handleClick} />
-              </motion.div>
-            </div>
+            <AnimatePresence>
+              {showButton && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeOut",
+                  }}
+                  className="inline-block"
+                  whileHover={{
+                    y: [-5, 5, -5],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    },
+                    // boxShadow: "0 0 50px #ffb84d",
+                    // rotate: [-1, 1, 0],
+                  }}
+                  exit={{ opacity: 0, scale: 0 }}
+                >
+                  <MagicButton onClick={handleClick} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </Activity>
+
       <TransitionOverlay
         isActive={transition}
         bgColor="#000"
