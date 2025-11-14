@@ -81,8 +81,6 @@ export default function HomePage() {
                       repeatType: "mirror",
                       ease: "easeInOut",
                     },
-                    // boxShadow: "0 0 50px #ffb84d",
-                    // rotate: [-1, 1, 0],
                   }}
                   exit={{ opacity: 0, scale: 0 }}
                 >

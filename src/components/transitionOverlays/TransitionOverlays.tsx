@@ -71,7 +71,7 @@ export default function TransitionOverlay({
           style={{ backgroundColor: bgColor }}
         >
           {text && (
-            <motion.p
+            <motion.div
               className=""
               initial={{ opacity: 0 }}
               animate={{ opacity: shouldHide ? 0 : 1 }}
@@ -89,7 +89,7 @@ export default function TransitionOverlay({
                 showCursor={false}
                 className="text-white text-lg animate-typing "
               />
-            </motion.p>
+            </motion.div>
           )}
         </motion.div>
       )}

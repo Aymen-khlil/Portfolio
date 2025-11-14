@@ -5,21 +5,37 @@ import griffendor from "../../../components/houseCards/images/Griffindor-logo.pn
 import hupperpuf from "../../../components/houseCards/images/Hupperpuf-logo.png";
 import ravenclaw from "../../../components/houseCards/images/Ravenclaw-logo.png";
 import slytherin from "../../../components/houseCards/images/Slytherin-logo.png";
-import { motion } from "framer-motion";
-import { Activity, useState } from "react";
-import "./house.css";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { useState } from "react";
+import StoryContainer from "@/components/sorting-hat-storytelling/StoryContainer";
+import Caracter from "@/components/houseCaracters/Caracter";
 
 const HousePicks = () => {
-  const [displayMessage, setDisplayMessage] = useState(false);
-  const [hatMessage, setHatMessage] = useState("");
+  const [displayMessage, setDisplayMessage] = useState(true);
+  const [caracter, setCaracter] = useState("Mudblood");
+  const [hatMessage, setHatMessage] = useState(
+    "Well well well… another confused human. Let's find you a house before you break something."
+  );
+  const [displayBtn, setDisplayBtn] = useState(false);
 
-  const handleChoosingAHouse = () => {
-    setDisplayMessage(true);
-    setHatMessage("Hogwarts");
+  const houseMessages: Record<string, string> = {
+    Gryffindor: "Ah yes, another hero in training… off to Gryffindor you go!",
+    Hufflepuff: "Sweet, patient, probably loves snacks… definitely Hufflepuff.",
+    Ravenclaw: "Big brain energy detected… off to Ravenclaw, genius.",
+    Slytherin:
+      "Ambition glowing like neon… try not to plot *too* much in Slytherin.",
   };
+
+  const handleChoosingAHouse = (house: string) => {
+    setCaracter(house);
+    setHatMessage(houseMessages[house] || "Interesting… very interesting.");
+    setDisplayMessage(true);
+    setDisplayBtn(true);
+  };
+
   return (
     <div
-      className=" h-screen flex items-center justify-center flex-col"
+      className="min-h-screen flex items-center justify-center flex-col overflow-auto"
       style={{
         backgroundImage: "url(/backgrounds/hog-dining.png)",
         backgroundSize: "cover",
@@ -27,27 +43,90 @@ const HousePicks = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className=" grid grid-cols-1 lg:grid-cols-2 h-screen w-full ">
-        <div className="h-full  flex items-center justify-center">One</div>
-        <div className="flex items-center justify-center h-full ">
-          <motion.div className=" grid grid-cols-2 gap-2 ">
-            <HouseCardContainer
-              houseName="Griffendor"
-              houseImage={griffendor}
-              onClick={handleChoosingAHouse}
-            />
-            <HouseCardContainer houseName="Hupperpuf" houseImage={hupperpuf} />
-            <HouseCardContainer houseName="Ravenclaw" houseImage={ravenclaw} />
-            <HouseCardContainer houseName="Slytherin" houseImage={slytherin} />
-          </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
+        <div className="lg:h-full w-full flex flex-col ">
+          <div className="flex  items-end justify-center lg:h-[80%] pt-8 lg:pt-0 ">
+            <Caracter caracterImage={caracter} />
+          </div>
+
+          <AnimatePresence mode={displayMessage ? "wait" : "sync"}>
+            {displayMessage && (
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{
+                  duration: 1,
+                  ease: "easeOut",
+                }}
+                className="h-36 lg:h-28 w-full flex items-center justify-center pb-4 lg:pb-0 "
+              >
+                <div className="h-full w-[90%] sm:w-[80%]">
+                  <StoryContainer
+                    hatMessage={hatMessage}
+                    setDisplayMessage={setDisplayMessage}
+                    displayBtn={displayBtn}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
-      <div className="h-[20vh] flex justify-center items-center w-full">
-        <Activity mode={displayMessage ? "visible" : "hidden"}>
-          <motion.div className="hat-message border-2 w-[50%] h-full">
-            <div className="hat-content">{hatMessage}</div>
-          </motion.div>
-        </Activity>
+
+        {/* House Cards Section */}
+        <div className="flex lg:items-center justify-center lg:h-screen  py-8 lg:py-0">
+          <MotionConfig
+            transition={{
+              delay: 5,
+              duration: 1,
+              ease: "easeInOut",
+            }}
+          >
+            <motion.div className="grid grid-cols-4 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-2 px-4">
+              <motion.div
+                initial={{ opacity: 0, y: -30, scale: 1.2 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+              >
+                <HouseCardContainer
+                  houseName="Gryffindor"
+                  houseImage={griffendor}
+                  onClick={() => handleChoosingAHouse("Gryffindor")}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30, scale: 1.2 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+              >
+                <HouseCardContainer
+                  houseName="Hufflepuff"
+                  houseImage={hupperpuf}
+                  onClick={() => handleChoosingAHouse("Hufflepuff")}
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -30, scale: 1.2 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+              >
+                <HouseCardContainer
+                  houseName="Ravenclaw"
+                  houseImage={ravenclaw}
+                  onClick={() => handleChoosingAHouse("Ravenclaw")}
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 1.2 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+              >
+                <HouseCardContainer
+                  houseName="Slytherin"
+                  houseImage={slytherin}
+                  onClick={() => handleChoosingAHouse("Slytherin")}
+                />
+              </motion.div>
+            </motion.div>
+          </MotionConfig>
+        </div>
       </div>
     </div>
   );

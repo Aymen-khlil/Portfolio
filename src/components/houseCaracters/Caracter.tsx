@@ -1,0 +1,53 @@
+import Image from "next/image";
+import griffendor from "./images/Griffindor.png";
+import hupperpuf from "./images/Hufflepuff.png";
+import ravenclaw from "./images/Ravenclaw.png";
+import slytherin from "./images/Slytherin.png";
+import mudblood from "./images/Mudblood.png";
+import { motion } from "framer-motion";
+import "./caracter.css";
+
+const Caracter = ({ caracterImage }: { caracterImage: string }) => {
+  const whichCaracter = () => {
+    switch (caracterImage) {
+      case "Gryffindor":
+        return griffendor;
+      case "Hufflepuff":
+        return hupperpuf;
+      case "Ravenclaw":
+        return ravenclaw;
+      case "Slytherin":
+        return slytherin;
+      default:
+        return mudblood;
+    }
+  };
+
+  return (
+    <motion.div
+      key={caracterImage} // IMPORTANT for re-animation on change
+      initial={{ opacity: 0, y: -30 }} // when entering
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {/* Floating animation wrapper */}
+      <motion.div
+        animate={{
+          y: [0, -5, 0], // slight hover up/down
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Image src={whichCaracter()} alt={caracterImage} />
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default Caracter;

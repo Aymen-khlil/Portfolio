@@ -1,19 +1,97 @@
 .house-card {
   position: relative;
-  padding: 13px 15px;
+  padding: 10px 12px;
   border-style: solid;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   background-clip: border-box;
   border-image-slice: 50 50 50 50;
-  border-image-width: 20px 20px 20px 20px;
+  border-image-width: 15px 15px 15px 15px;
   border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: stretch stretch;
   border-image-source: url("./images/cardContainer.png");
+}
+
+/* Small screens (sm: 640px and up) */
+@media (min-width: 360px) {
+  .house-card {
+    padding: 11px 13px;
+    height: 80px;
+    width: 80px;
+    border-image-width: 17px 17px 17px 17px;
+  }
+}
+
+@media (min-width: 666px) {
+  .house-card {
+    padding: 12px 14px;
+    height: 130px;
+    width: 130px;
+    border-image-width: 18px 18px 18px 18px;
+  }
+}
+
+/* Medium screens (md: 768px and up) */
+@media (min-width: 768px) {
+  .house-card {
+    padding: 12px 14px;
+    height: 180px;
+    width: 180px;
+    border-image-width: 18px 18px 18px 18px;
+  }
+}
+
+/* Large screens (lg: 1024px and up) */
+@media (min-width: 1024px) {
+  .house-card {
+    padding: 13px 15px;
+    height: 200px;
+    width: 200px;
+    border-image-width: 20px 20px 20px 20px;
+  }
 }
 
 .card-content {
   background-color: #ffc86b;
   height: 100%;
   border-radius: 8px;
+}
+
+.hat-message {
+  position: relative;
+  padding: 10px 12px;
+  background-clip: border-box;
+  border-image-slice: 48 94 48 98;
+  border-image-width: 15px 15px 15px 15px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  border-image-source: url("/scroll.png");
+}
+
+/* Responsive hat-message */
+@media (min-width: 640px) {
+  .hat-message {
+    padding: 11px 13px;
+    border-image-width: 17px 17px 17px 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hat-message {
+    padding: 13px 15px;
+    border-image-width: 20px 20px 20px 20px;
+  }
+}
+
+.hat-content {
+  padding: 8px;
+  background-color: #ffc86b;
+  height: 100%;
+  border-radius: 8px;
+}
+
+@media (min-width: 640px) {
+  .hat-content {
+    padding: 10px;
+  }
 }

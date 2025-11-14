@@ -1,0 +1,50 @@
+.scroll-container {
+  position: relative;
+  padding: 20px;
+  background-clip: border-box;
+  border-image-slice: 77 114 56 105;
+  border-image-width: 20px 20px 20px 20px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  border-image-source: url("./images/Scroll.png");
+}
+
+.scroll-message {
+  padding: 10px;
+  background-image: url("./images/bg2.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  box-shadow: 0 0px 30px 1px #e8a556;
+}
+
+.message-container {
+  position: relative;
+  padding: 12px 15px;
+  height: 100%;
+  border-style: solid;
+  background-clip: border-box;
+  border-image-slice: 50 50 50 50;
+  border-image-width: 20px 20px 20px 20px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  border-image-source: url("../houseCards/images/cardContainer.png");
+}
+
+.message-content {
+  background-color: #ffc86b;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.close-button {
+  position: relative;
+  font-size: 10px;
+  color: white;
+  padding: 5px 10px;
+  border-image-slice: 27 27 27 27;
+  border-image-width: 20px 20px 20px 20px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  border-image-source: url("/close-button.png");
+}

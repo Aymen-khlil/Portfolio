@@ -1,0 +1,32 @@
+.carac-img {
+  width: 700px;
+  max-width: 90vw; /* Prevents overflow on very small screens */
+}
+
+/* Small screens (sm: 640px and up) */
+@media (min-width: 640px) {
+  .carac-img {
+    width: 250px;
+  }
+}
+
+/* Medium screens (md: 768px and up) */
+@media (min-width: 768px) {
+  .carac-img {
+    width: 400px;
+  }
+}
+
+/* Large screens (lg: 1024px and up) */
+@media (min-width: 1024px) {
+  .carac-img {
+    width: 500px;
+  }
+}
+
+/* Extra large screens (xl: 1280px and up) */
+@media (min-width: 1280px) {
+  .carac-img {
+    width: 600px;
+  }
+}
