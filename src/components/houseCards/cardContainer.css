@@ -5,7 +5,7 @@
   height: 150px;
   width: 150px;
   background-clip: border-box;
-  border-image-slice: 50 50 50 50;
+  border-image-slice: 50 50 50 50 fill;
   border-image-width: 15px 15px 15px 15px;
   border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: stretch stretch;
@@ -52,9 +52,9 @@
 }
 
 .card-content {
-  background-color: #ffc86b;
+  /* background-color: red; */
   height: 100%;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 .hat-message {
