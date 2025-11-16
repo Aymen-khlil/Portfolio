@@ -3,12 +3,12 @@ import { Press_Start_2P, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PixelTraillWrapper from "@/components/pixelTrails/pixelTraillWrapper";
 
-const geistSans = Press_Start_2P({
+export const geistSans = Press_Start_2P({
   subsets: ["latin"],
   weight: "400",
 });
 
-const geistMono = Geist_Mono({
+export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });

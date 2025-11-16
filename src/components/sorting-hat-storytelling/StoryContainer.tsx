@@ -10,10 +10,12 @@ const StoryContainer = ({
   hatMessage,
   setDisplayMessage,
   displayBtn,
+  continueAction,
 }: {
   hatMessage: string;
   setDisplayMessage: Dispatch<SetStateAction<boolean>>;
   displayBtn: boolean;
+  continueAction?: () => void;
 }) => {
   return (
     <motion.div className="message-container relative flex flex-col items-center justify-start w-full">
@@ -28,7 +30,7 @@ const StoryContainer = ({
 
       <div className="absolute -right-2 -top-2 ">
         <button
-          className="close-button "
+          className="close-button active:scale-[0.9]"
           onClick={() => setDisplayMessage(false)}
         >
           X
@@ -37,7 +39,7 @@ const StoryContainer = ({
       {displayBtn && (
         <motion.div
           key={hatMessage}
-          className="absolute -bottom-4 "
+          className="absolute -bottom-4  active:scale-[0.9]"
           initial={{ opacity: 0, scale: 1.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -46,7 +48,7 @@ const StoryContainer = ({
             ease: "easeInOut",
           }}
         >
-          <ActionButton> Next </ActionButton>
+          <ActionButton onClick={continueAction}> Continue </ActionButton>
         </motion.div>
       )}
     </motion.div>

@@ -9,8 +9,10 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useState } from "react";
 import StoryContainer from "@/components/sorting-hat-storytelling/StoryContainer";
 import Caracter from "@/components/houseCaracters/Caracter";
+import { useRouter } from "next/navigation";
 
 const HousePicks = () => {
+  const router = useRouter();
   const [displayMessage, setDisplayMessage] = useState(true);
   const [caracter, setCaracter] = useState("Mudblood");
   const [hatMessage, setHatMessage] = useState(
@@ -66,6 +68,7 @@ const HousePicks = () => {
                     hatMessage={hatMessage}
                     setDisplayMessage={setDisplayMessage}
                     displayBtn={displayBtn}
+                    continueAction={() => router.push("/marauder-map")}
                   />
                 </div>
               </motion.div>

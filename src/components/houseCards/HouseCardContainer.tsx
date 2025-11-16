@@ -19,7 +19,7 @@ const HouseCardContainer: React.FC<{
 
   return (
     <motion.button
-      className="house-card"
+      className="house-card tansition-all active:scale-[0.9]"
       whileTap={{
         scale: 0.95,
         filter: "brightness(0.9)",
@@ -33,7 +33,7 @@ const HouseCardContainer: React.FC<{
         style={{ boxShadow }}
         className="card-content flex flex-col items-center justify-center"
       >
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center ">
           <Image
             src={houseImage}
             alt={houseName}
@@ -42,7 +42,9 @@ const HouseCardContainer: React.FC<{
             className=" h-auto w-20 md:w-24 lg:w-30"
           />
         </div>
-        <motion.p className="hidden md:block text-sm  ">{houseName}</motion.p>
+        <motion.p className="hidden md:block text-sm pb-3 ">
+          {houseName}
+        </motion.p>
       </motion.div>
     </motion.button>
   );

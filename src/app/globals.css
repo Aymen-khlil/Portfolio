@@ -14,7 +14,8 @@ body {
 }
 
 body {
-  background-image: url("/hogwarts.png");
+  background-color: black;
+  /* background-image: url("/hogwarts.png"); */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

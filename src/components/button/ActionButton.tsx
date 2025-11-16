@@ -1,8 +1,18 @@
 import { ReactNode } from "react";
 import "./button.css";
 
-const ActionButton = ({ children }: { children: ReactNode }) => {
-  return <button className="action-btn action-text">{children}</button>;
+const ActionButton = ({
+  children,
+  onClick,
+}: {
+  children: ReactNode;
+  onClick?: () => void;
+}) => {
+  return (
+    <button className="action-btn action-text" onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default ActionButton;
