@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { useState, useEffect } from "react";
 import "./aboutMe.css";
-import { geistBeth } from "@/app/layout";
+import AboutMeContent from "./AboutMeContent";
 
 export default function AboutMe() {
   const ANIMATION = {
@@ -44,6 +44,40 @@ export default function AboutMe() {
     return () => clearTimeout(t);
   }, [maskEnd]);
 
+  const sentence = "I solemnly swear that I am up to no good".split(" ");
+
+  const wordVariant = {
+    hidden: { opacity: 0, y: 10, filter: "blur(10px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.35, easeInOut },
+    },
+    exit: {
+      opacity: 0,
+      filter: "blur(10px)",
+      transition: { duration: 0.35, easeInOut },
+    },
+  };
+
+  const containerVariant = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12, // delay between each word
+      },
+    },
+    exit: {
+      opacity: 1,
+      // transition: {
+      //   staggerChildren: 0.12,
+      //   staggerDirection: 1,
+      // },
+    },
+  };
+
   return (
     <div className="relative h-screen ">
       <AnimatePresence mode="wait">
@@ -57,15 +91,19 @@ export default function AboutMe() {
             transition={{ duration: ANIMATION.welcomeFadeIn / 1000 }}
             className="h-full  flex items-center justify-center "
           >
-            <motion.h1
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: ANIMATION.welcomeFadeOut / 1000 }}
-              className={`welcome-message text-white text-4xl  `}
+            <motion.div
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="welcome-message text-white text-3xl flex gap-4 items-center justify-center"
             >
-              Welcome
-            </motion.h1>
+              {sentence.map((word, i) => (
+                <motion.p key={i} variants={wordVariant} className=" ">
+                  {word}
+                </motion.p>
+              ))}
+            </motion.div>
           </motion.div>
         )}
 
@@ -77,11 +115,6 @@ export default function AboutMe() {
             animate={{ opacity: 1 }}
             transition={{ duration: ANIMATION.maskFadeIn / 1000 }}
             className="content-mask h-full  "
-            style={
-              {
-                // zIndex: "1",
-              }
-            }
           ></motion.div>
         )}
 
@@ -94,10 +127,7 @@ export default function AboutMe() {
             transition={{ duration: 1 }}
             className="final-content h-full"
           >
-            <div className="p-10">
-              <h2 className="text-white text-3xl">Page 3 Content</h2>
-              <p className="text-white mt-4">Page revealed 🎉</p>
-            </div>
+            <AboutMeContent />
           </motion.div>
         )}
       </AnimatePresence>

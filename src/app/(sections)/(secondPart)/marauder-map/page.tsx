@@ -2,10 +2,12 @@
 
 import AboutMe from "@/components/mapOverlay/AboutMe";
 import "./getToKnowMe.css";
-import Mapping from "@/components/mapOverlay/Mapping";
+
+import { usePathname } from "next/navigation";
 
 const GetToKnowMe = () => {
-  return <AboutMe />;
+  const pathname = usePathname();
+  return <AboutMe key={pathname} />;
 };
 
 export default GetToKnowMe;

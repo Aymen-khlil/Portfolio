@@ -1,0 +1,37 @@
+.banner {
+  position: relative;
+  border-style: solid;
+  padding: 17px 25px;
+  border-image-source: url("./images/navbar.png");
+  border-image-slice: 26 27 27 27 fill;
+  border-image-width: 18px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  background-clip: border-box;
+}
+
+.navbar-title {
+  text-align: center;
+  color: #7f3313;
+}
+
+.navbar-action {
+  font-size: 12px;
+  color: #b94e1c;
+  text-shadow: 0.5px 0.5px 0 #fba658;
+}
+
+.navbar-action:hover {
+  color: #b94e1c;
+  text-shadow: -0.5px -0.5px 2px #fba658, 0.5px -0.5px 2px #fba658,
+    -0.5px 0.5px 2px #fba658, 0.5px 0.5px 2px #fba658, -0.5px 0 2px #fba658,
+    0.5px 0 2px #fba658, 0 -0.5px 2px #fba658, 0 0.5px 2px #fba658;
+}
+
+.action-active {
+  font-size: 12px;
+  color: #b94e1c;
+  text-shadow: -0.5px -0.5px 2px #fba658, 0.5px -0.5px 2px #fba658,
+    -0.5px 0.5px 2px #fba658, 0.5px 0.5px 2px #fba658, -0.5px 0 2px #fba658,
+    0.5px 0 2px #fba658, 0 -0.5px 2px #fba658, 0 0.5px 2px #fba658;
+}
