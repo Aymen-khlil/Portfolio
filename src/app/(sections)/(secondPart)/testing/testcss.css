@@ -1,0 +1,21 @@
+.content-mask {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+.content-mask::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  mask-image: url("/backgrounds/gifTwo.gif");
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  z-index: -1;
+  background-image: url("/backgrounds/mauraudarMap.png");
+  background-size: cover;
+  background-position: center;
+}

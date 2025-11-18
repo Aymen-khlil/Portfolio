@@ -5,7 +5,7 @@ import "./getToKnowMe.css";
 import Mapping from "@/components/mapOverlay/Mapping";
 
 const GetToKnowMe = () => {
-  return <Mapping />;
+  return <AboutMe />;
 };
 
 export default GetToKnowMe;

@@ -1,13 +1,35 @@
 import Image from "next/image";
-import griffendor from "./images/Griffindor.png";
-import hupperpuf from "./images/Hufflepuff.png";
-import ravenclaw from "./images/Ravenclaw.png";
-import slytherin from "./images/Slytherin.png";
-import mudblood from "./images/Mudblood.png";
+// import griffendor from "./images/Griffindor.png";
+// import hupperpuf from "./images/Hufflepuff.png";
+// import ravenclaw from "./images/Ravenclaw.png";
+// import slytherin from "./images/Slytherin.png";
+// import mudblood from "./images/Mudblood.png";
+
+import griffendor from "./images/Griffindor-pixalated.png";
+import hupperpuf from "./images/Hufflepuff-pixalated.png";
+import ravenclaw from "./images/Ravenclaw-pixalated.png";
+import slytherin from "./images/Slytherin-pixalated.png";
+import mudblood from "./images/Mudblood-pixalated.png";
+
 import { motion } from "framer-motion";
 import "./caracter.css";
 
 const Caracter = ({ caracterImage }: { caracterImage: string }) => {
+  // const whichCaracter = () => {
+  //   switch (caracterImage) {
+  //     case "Gryffindor":
+  //       return griffendor;
+  //     case "Hufflepuff":
+  //       return hupperpuf;
+  //     case "Ravenclaw":
+  //       return ravenclaw;
+  //     case "Slytherin":
+  //       return slytherin;
+  //     default:
+  //       return mudblood;
+  //   }
+  // };
+
   const whichCaracter = () => {
     switch (caracterImage) {
       case "Gryffindor":

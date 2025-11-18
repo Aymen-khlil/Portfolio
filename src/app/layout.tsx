@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Press_Start_2P, Geist_Mono } from "next/font/google";
+import { Press_Start_2P, Geist_Mono, Beth_Ellen } from "next/font/google";
 import "./globals.css";
 import PixelTraillWrapper from "@/components/pixelTrails/pixelTraillWrapper";
 
@@ -11,6 +11,11 @@ export const geistSans = Press_Start_2P({
 export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+export const geistBeth = Beth_Ellen({
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +30,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preload the mask GIF */}
+        <link
+          rel="preload"
+          href="../components/mapOverlay/images/gifTwo.gif"
+          as="image"
+          type="image/gif"
+        />
+      </head>
       <body
         className={`${geistSans.className} ${geistMono.variable} h-screen    overflow-auto`}
       >
-        <PixelTraillWrapper />
+        <PixelTraillWrapper key={"Trailing"} />
         {children}
       </body>
     </html>
